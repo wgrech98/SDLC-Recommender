@@ -1,116 +1,178 @@
 /* Base styling*/
 .container {
-    max-width: 960px;
+  max-width: 960px;
 }
 
-body {
-    display: flex;
-    justify-content: flex-start;
-    align-items: center;
-    flex-direction: column;
-    /* font-family: sans-serif; */
-}
-  
 a {
-text-decoration: none;
+  text-decoration: none;
 }
 
 footer {
-    bottom: 0px;
-    position: sticky;
-    background-color: white;
-    padding-bottom: 20px;
-    padding-top: 10px;
+  bottom: 0px;
+  background-color: white;
+  padding-bottom: 20px;
+  padding-top: 10px;
+  position: fixed;
 }
 
-
-.styled-table {
-    border-collapse: collapse;
-    margin: 25px 0; 
-    font-size: 1.5em;
-    font-family: sans-serif;
-    min-width: 400px;
-    box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
+.big-table {
+  border-collapse: collapse;
+  margin: -30px 0;
+  font-size: 1.5em;
+  font-family: inherit;
+  min-width: 400px;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
 }
 
-.styled-table thead tr {
-    background-color: #07221c;
-    color: #ffffff;
-    text-align: left;
+.big-table thead tr {
+  background-color: #07221c;
+  color: #ffffff;
+  text-align: left;
 }
 
-.styled-table th,
-.styled-table td {
-    padding: 30px 50px;
+.big-table th,
+.big-table td {
+  padding: 30px 50px;
 }
 
-.styled-table tbody tr {
-    border-bottom: 1px solid #dddddd;
+.big-table tbody tr {
+  border-bottom: 1px solid #dddddd;
 }
 
-.styled-table tbody tr:nth-of-type(even) {
-    background-color: #f3f3f3;
+.big-table tbody tr:nth-of-type(even) {
+  background-color: #f3f3f3;
 }
 
-.styled-table tbody tr:last-of-type {
-    border-bottom: 2px solid #07221c;
+.big-table tbody tr:last-of-type {
+  border-bottom: 2px solid #07221c;
 }
 
-.styled-table tbody tr.active-row {
-    font-weight: bold;
-    color: #07221c;
+.big-table tbody tr.active-row {
+  font-weight: bold;
+  color: #07221c;
 }
 
+.other-table {
+  border-collapse: collapse;
+  font-size: 15px;
+  font-family: sans-serif;
+  min-width: 400px;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
+  text-align: center;
+  padding: 10px 20px;
+}
+
+.other-table thead tr {
+  background-color: #07221c;
+  color: #ffffff;
+  text-align: center;
+}
+
+.other-table th,
+.other-table td {
+  padding: 5px 5px;
+  text-align: center;
+}
+
+.other-table tbody tr {
+  border-bottom: 1px solid #dddddd;
+}
+
+.other-table tbody tr:nth-of-type(even) {
+  background-color: #f3f3f3;
+}
+
+.other-table tbody tr:last-of-type {
+  border-bottom: 2px solid #07221c;
+}
+
+.other-table tbody tr.active-row {
+  color: #07221c;
+}
+
+.tooltip {
+  position: relative;
+  display: inline-block;
+  border-bottom: 1px dotted black; /* If you want dots under the hoverable text */
+}
+
+/* Tooltip text */
+.tooltip .tooltiptext {
+  /* background-color: #eeeeee; */
+  width: 120px;
+  bottom: 100%;
+  left: 50%;
+  margin-left: -60px; /* Use half of the width (120/2 = 60), to center the tooltip */
+}
+
+/* Show the tooltip text when you mouse over the tooltip container */
+.tooltip:hover .tooltiptext {
+  visibility: visible;
+}
 
 .popover__title {
-font-size: 24px;
-line-height: 36px;
-text-decoration: none;
-color: rgb(22, 9, 9);
-text-align: center;
-padding: 15px 0;
-margin-bottom: 10px;
+  font-size: 24px;
+  line-height: 36px;
+  text-decoration: none;
+  color: rgb(22, 9, 9);
+  text-align: center;
+  padding: 5px 0;
+  margin-bottom: 10px;
 }
 
 .popover__wrapper {
-position: relative;
-padding: 20px;
+  position: relative;
+  padding: 10px;
+}
+
+.popover-header {
+  padding: 10px 15px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px solid black;
+}
+
+.popover-header .title {
+  font-size: 1.25rem;
+  font-weight: bold;
 }
 
 .popover__content {
-visibility: hidden;
-position: absolute;
-left: -150px;
-transform: translate(0, 10px);
-background-color: #bfbfbf;
-padding: 15px;
-box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.26);
-width: auto;
+  visibility: hidden;
+  position: absolute;
+  left: -180px;
+  transform: translate(0, 10px);
+  background-color: #eeeeee;
+  padding: 15px;
+  font-size: 17px;
+  box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.26);
+  width: 450px;
+  min-width: 100px;
 }
 
 .popover__content:before {
-position: absolute;
-top: -10px;
-content: "";
-right: calc(50% - 70px);
-border-style: solid;
-border-width: 0 10px 10px 10px;
-border-color: transparent transparent #bfbfbf transparent;
-transition-duration: 0.3s;
-transition-property: transform;
+  position: absolute;
+  top: -10px;
+  content: "";
+  right: calc(50% - 10px);
+  border-style: solid;
+  border-width: 0 10px 10px 10px;
+  border-color: transparent transparent #e7e7e7 transparent;
+  transition-duration: 0.3s;
+  transition-property: transform;
 }
 
 .popover__wrapper:hover .popover__content {
-z-index: 10; 
-opacity: 1;
-visibility: visible;
-transform: translate(0, 0px);
-transition: all 0.5s cubic-bezier(0.75, -0.02, 0.2, 0.97);
+  z-index: 10;
+  opacity: 1;
+  visibility: visible;
+  transform: translate(0, 0px);
+  transition: all 0.5s cubic-bezier(0.75, -0.02, 0.2, 0.97);
 }
 
 .popover__message {
-text-align: left;
-font-size: 16px;
+  padding: 15px 20px;
+  text-align: left;
+  font-size: 16px;
 }
-
-
