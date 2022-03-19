@@ -93,28 +93,6 @@ class D3_RMS():
         df.testing_intensity = [testing_intensity[item]
                                 for item in df.testing_intensity]
 
-        # le = preprocessing.LabelEncoder()
-        # df['risk_analysis'] = le.fit_transform(df['risk_analysis'])
-        # df['user_participation'] = le.fit_transform(df['user_participation'])
-        # df['team_expertise'] = le.fit_transform(df['team_expertise'])
-        # df['development_expertise'] = le.fit_transform(
-        #     df['development_expertise'])
-        # df['documentation_needed'] = le.fit_transform(
-        #     df['documentation_needed'])
-        # df['funding_available'] = le.fit_transform(df['funding_available'])
-        # df['delivery_speed'] = le.fit_transform(df['delivery_speed'])
-        # df['task_visualisation'] = le.fit_transform(df['task_visualisation'])
-        # df['prototyping'] = le.fit_transform(df['prototyping'])
-        # df['requirements_volatility'] = le.fit_transform(
-        #     df['requirements_volatility'])
-        # df['requirements_clarity'] = le.fit_transform(
-        #     df['requirements_clarity'])
-        # df['development_time'] = le.fit_transform(df['development_time'])
-        # df['project_size'] = le.fit_transform(df['project_size'])
-        # df['team_size'] = le.fit_transform(df['team_size'])
-        # df['product_complexity'] = le.fit_transform(df['product_complexity'])
-        # df['testing_intensity'] = le.fit_transform(df['testing_intensity'])
-
         return df
 
     def perform_D31(self):
