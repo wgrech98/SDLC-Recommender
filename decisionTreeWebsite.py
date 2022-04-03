@@ -112,18 +112,11 @@ class D3_RMS():
 
         y_predict = self.model.predict(self.X_test)
 
-        # exp = show_prediction(self.model, X_test, feature_names =self.f_names, show_feature_values=True)
-
-        # with open('C:\\Tmp\\Desktop\iris-importance.htm','wb') as f:
-        #     f.write(exp.data.encode("UTF-8"))
-
         return y_predict[0]
 
     def get_explanation(self):
 
         exp = eli5.show_prediction(
-            self.model, self.X_test, feature_names=self.f_names, show_feature_values=True, top_targets=1, top=8)
-
-        # raw_html = eli5.format_as_html(exp)
+            self.model, self.X_test, feature_names=self.f_names, show_feature_values=False, top_targets=1, top=8)
 
         return exp
