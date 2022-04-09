@@ -1,16 +1,14 @@
 import pandas as pd
 from sklearn.tree import DecisionTreeClassifier
-from sklearn import preprocessing
 import eli5
 
 
-class D3_RMS():
+class D3_Algorithm():
 
     def __init__(self, test):
         """
-            constructor: partitions data into train and test sets, sets the minimum accepted significance value
-            and maximum star size which limits the number of complexes considered for specialisation.
-            """
+        constructor: set initial variables
+        """
         self.cols = ['methodology', 'requirements_volatility',
                      'requirements_clarity', 'development_time', 'project_size', 'team_size',
                      'product_complexity', 'testing_intensity', 'risk_analysis', 'user_participation',
@@ -35,11 +33,19 @@ class D3_RMS():
                         'Hybrid: Scrum and Waterfall', 'Spiral', 'RAD']
 
     def read_csv(self):
+        """ 
+        Function to split the CSV file into two dataframes, one for records representing the first methodology that participants
+        rated while the second represents the records for those participant who responded to use a second methodology.
+        The two dataframes are then merged together and the final dataframe is returned.
+        """
+
         csv_path = 'survey_dataset.csv'
         df = pd.read_csv(csv_path, names=self.cols,
                          usecols=self.num_cols, header=0)
         df1 = pd.read_csv(csv_path, names=self.cols,
                           usecols=self.num_cols1, header=0)
+
+        # Deleting rows with null values
         df = df.dropna()
         df1 = df1.dropna()
         self.dataset = df.append(df1, ignore_index=True)
@@ -47,6 +53,11 @@ class D3_RMS():
         return self.dataset
 
     def convert_to_vectors(self, df):
+        """ 
+        Convert characteristics to vectors to enable machine learning processing.
+
+        Returns discrete dataset.
+        """
 
         df['risk_analysis'] = df['risk_analysis'].map(
             dict(Low=1, Medium=2, High=3))
@@ -67,8 +78,6 @@ class D3_RMS():
         df['prototyping'] = df['prototyping'].map(
             dict(Low=1, Medium=2, High=3))
 
-        # project_type = {'Application (everything else)': 1,'System (sits between the hardware and the application software e.g. OSs)': 2,
-        #                 'Utility (performs specific tasks to keep the computer running e.g. antivirus)':3}
         requirements_volatility = {'Changing': 1, 'Fixed': 2}
         requirements_clarity = {
             'unknown/defined later in the lifecycle': 1, 'understandable/early defined': 2}
@@ -79,7 +88,6 @@ class D3_RMS():
         testing_intensity = {
             'After each cycle (Intensive testing)': 1, 'After development is done (Non-intensive testing)': 2}
 
-        # df.project_type = [project_type[item] for item in df.project_type]
         df.requirements_volatility = [
             requirements_volatility[item] for item in df.requirements_volatility]
         df.requirements_clarity = [requirements_clarity[item]
@@ -95,19 +103,36 @@ class D3_RMS():
 
         return df
 
-    def perform_D31(self):
+    def perform_D3(self):
+        """
+        Function which creates a decision tree model, and generate predictions based on the model.
+
+        Returns the decision tree prediction.
+        """
+
+        # Invokes the read csv function
         self.read_csv()
+
+        # Convert string data to discrete variables
         cl_dataset = self.convert_to_vectors(self.dataset)
+
+        # Set X and y
         X = cl_dataset.drop('methodology', axis=1)
         y = cl_dataset[['methodology']]
+
+        # Create decision tree model with criterion entropy and max_depth 17 to account for all features
         self.model = DecisionTreeClassifier(
             criterion="entropy", random_state=42, max_depth=17, min_samples_leaf=1)
+
+        # Fit the model
         self.model.fit(X, y)
 
         X_test = self.test
 
+        # Convert X_test to dataframe to produce prediction
         X_test = pd.DataFrame(X_test, columns=self.f_names)
 
+        # Convert X_test values to discrete
         self.X_test = self.convert_to_vectors(X_test)
 
         y_predict = self.model.predict(self.X_test)
@@ -115,8 +140,12 @@ class D3_RMS():
         return y_predict[0]
 
     def get_explanation(self):
+        """ 
+        Function which invokes the eli5 library to get insights about the most important features that led to a decision tree prediction.
+        Returns explanation.
+        """
 
         exp = eli5.show_prediction(
-            self.model, self.X_test, feature_names=self.f_names, show_feature_values=False, top_targets=1, top=8)
+            self.model, self.X_test, feature_names=self.f_names, top_targets=1, top=8)
 
         return exp

@@ -1,7 +1,7 @@
 from flask import Flask, render_template, request
 from test_rules import Test
-from decisionTreeWebsite import D3_RMS as D3
-from knnWebsite import KNN_RMS as knn
+from decisionTreeWebsite import D3_Algorithm as D3
+from knnWebsite import KNN_Algorithm as knn
 
 app = Flask(__name__)
 
@@ -14,6 +14,12 @@ def home():
 
 @app.route("/result", methods=['POST', 'GET'])
 def result():
+    """
+        Function to get the characteristic values entered by the active user
+        in the index.html page, pass these values to the algorithms to render
+        predictions, and display these through the result.html page
+    """
+
     requirements_volatility = request.values.get(
         "requirementsVolatilitySelect")
     requirements_clarity = request.values.get("requirementsClaritySelect")
@@ -38,14 +44,17 @@ def result():
                 development_expertise, documentation_needed, funding_availibility, delivery_speed, task_visualisation,
                 prototyping]]
 
+    # The CN2 prediction
     CN2 = Test(testSet)
     result_CN2, rule_cn2 = CN2.test_model()
 
+    # The KNN prediction
     KNN = knn(testSet)
     result_KNN, html = KNN.perform_KNN()
 
+    # The Decision Tree prediction
     D_3 = D3(testSet)
-    result_D3 = D_3.perform_D31()
+    result_D3 = D_3.perform_D3()
     explanation = D_3.get_explanation()
 
     return render_template("result.html", result10=result_CN2, result20=result_KNN, result30=result_D3, rule_of_cn2=rule_cn2, html_knn=html, exp_d3=explanation)

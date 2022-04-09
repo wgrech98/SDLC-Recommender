@@ -1,5 +1,4 @@
 import pandas as pd
-import numpy as np
 import pickle
 
 
@@ -36,26 +35,36 @@ class Test():
 
         self.train = None
 
-        #self.train = pd.read_csv(data_csv)
         self.min_significance = 0.5
+
         self.max_star_size = 5
+
         self.filename = "rules.pkl"
 
     def read_csv(self):
+        """ 
+        Function to split the CSV file into two dataframes, one for records representing the first methodology that participants
+        rated while the second represents the records for those participant who responded to use a second methodology.
+        The two dataframes are then merged together and the final dataframe is returned.
+        """
+
         csv_path = 'survey_dataset.csv'
         df = pd.read_csv(csv_path, names=self.cols,
                          usecols=self.num_cols, header=0)
         df1 = pd.read_csv(csv_path, names=self.cols,
                           usecols=self.num_cols1, header=0)
+
+        # Deleting rows with null values
         df = df.dropna()
         df1 = df1.dropna()
+
+        # Merging the two datasets
         self.dataset = df.append(df1, ignore_index=True)
 
     def test_model(self):
         """
         Test rule list returned by fit_CN2_Model function on test data(or manually supplied data)
-        returns a dataframe that contains the rule, rule acc, num of examples covered.
-        Also return general accuracy as average of each rule accuracy
+        returns the predicted methodology and the rule that was triggered.
         """
         self.read_csv()
         open_file = open(self.filename, "rb")
@@ -79,13 +88,10 @@ class Test():
 
         return self.predicted_methodology, self.covered_rule
 
-    def complex_coverage(self, passed_complex, data_set='default'):
+    def complex_coverage(self, passed_complex, data_set):
         """ Returns set of instances of the data 
             which complex(rule) covers as a dataframe.
         """
-        # if type(data_set) == str:
-        #     data_set = self.train
-        # coverage = []
 
         rule = self.build_rule(passed_complex)
         if rule == False:
@@ -95,12 +101,6 @@ class Test():
         rule_coverage_indexes = data_set[mask].index.values
         rule_coverage_dataframe = data_set[mask]
 
-        # #iterate over dataframe rows
-        # for index,row in data_set.iterrows():
-        # 	if self.check_rule_datapoint(row, complex):
-        # 		coverage.append(index)
-
-        #import ipdb;ipdb.set_trace(context=8)
         return rule_coverage_indexes, rule_coverage_dataframe
 
     def build_rule(self, passed_complex):
@@ -114,6 +114,7 @@ class Test():
             atts_used_in_rule.append(selector[0])
         set_of_atts_used_in_rule = set(atts_used_in_rule)
 
+        # Checks if there are repetitions in the attributes used
         if len(set_of_atts_used_in_rule) < len(atts_used_in_rule):
             return False
 

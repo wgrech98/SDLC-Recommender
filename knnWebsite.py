@@ -3,13 +3,13 @@ from sklearn.neighbors import KNeighborsClassifier
 from IPython.display import HTML
 
 
-class KNN_RMS():
+class KNN_Algorithm():
 
     def __init__(self, test):
         """
-        constructor: partitions data into train and test sets, sets the minimum accepted significance value
-        and maximum star size which limits the number of complexes considered for specialisation.
+        constructor: set initial variables
         """
+
         self.cols = ['methodology', 'requirements_volatility',
                      'requirements_clarity', 'development_time', 'project_size', 'team_size',
                      'product_complexity', 'testing_intensity', 'risk_analysis', 'user_participation',
@@ -34,18 +34,34 @@ class KNN_RMS():
                         'Hybrid: Scrum and Waterfall', 'Spiral', 'RAD']
 
     def read_csv(self):
+        """ 
+        Function to split the CSV file into two dataframes, one for records representing the first methodology that participants
+        rated while the second represents the records for those participant who responded to use a second methodology.
+        The two dataframes are then merged together and the final dataframe is returned.
+        """
+
         csv_path = 'survey_dataset.csv'
         df = pd.read_csv(csv_path, names=self.cols,
                          usecols=self.num_cols, header=0)
         df1 = pd.read_csv(csv_path, names=self.cols,
                           usecols=self.num_cols1, header=0)
+
+        # Deleting rows with null values
         df = df.dropna()
         df1 = df1.dropna()
+
+        # Merging the two datasets
         self.dataset = df.append(df1, ignore_index=True)
 
         return self.dataset
 
     def convert_to_vectors(self, df):
+        """ 
+        Convert characteristics to vectors to enable machine learning processing.
+
+        Returns discrete dataset.
+        """
+
         df['risk_analysis'] = df['risk_analysis'].map(
             dict(Low=1, Medium=2, High=3))
         df['user_participation'] = df['user_participation'].map(
@@ -65,8 +81,6 @@ class KNN_RMS():
         df['prototyping'] = df['prototyping'].map(
             dict(Low=1, Medium=2, High=3))
 
-        # project_type = {'Application (everything else)': 1,'System (sits between the hardware and the application software e.g. OSs)': 2,
-        #                 'Utility (performs specific tasks to keep the computer running e.g. antivirus)':3}
         requirements_volatility = {'Changing': 1, 'Fixed': 2}
         requirements_clarity = {
             'unknown/defined later in the lifecycle': 1, 'understandable/early defined': 2}
@@ -77,7 +91,6 @@ class KNN_RMS():
         testing_intensity = {
             'After each cycle (Intensive testing)': 1, 'After development is done (Non-intensive testing)': 2}
 
-        # df.project_type = [project_type[item] for item in df.project_type]
         df.requirements_volatility = [
             requirements_volatility[item] for item in df.requirements_volatility]
         df.requirements_clarity = [requirements_clarity[item]
@@ -94,30 +107,54 @@ class KNN_RMS():
         return df
 
     def perform_KNN(self):
+        """
+        Function which performs the K-nearest neighbour and computes the eucilidean distance of
+        each methodology based on the user record.
+
+        Returns the KNN prediction and a table with the methodologies' eucilidean distance based
+        on the user record
+        """
+
+        # Invokes read csv function
         self.read_csv()
+
+        # Converts string data to discrete variables
         cl_dataset = self.convert_to_vectors(self.dataset)
+
+        # Set X and y
         X = cl_dataset.drop('methodology', axis=1)
         y = cl_dataset[['methodology']]
+
+        # Create knn model with number of neighbors set to 1
         self.model = KNeighborsClassifier(n_neighbors=1)
+
+        # Fit the model
         self.model.fit(X, y)
 
         X_test = self.test
 
+        # Convert X_test to dataframe to produce prediction
         X_test = pd.DataFrame(X_test, columns=self.f_names)
 
+        # Convert X_test values to discrete
         X_test = self.convert_to_vectors(X_test)
 
         y_predict = self.model.predict(X_test)
 
+        # Use the model to calculate Eucilidean distance from all the datapoints
         distances, indices = self.model.kneighbors(
             X_test, n_neighbors=103, return_distance=True)
 
+        # Set the methodology name as index and flatten
         names_similar = pd.Series(indices.flatten()).map(
             self.dataset.reset_index()['methodology'])
 
+        # Create a dataframe with the methodology and the distance
+        # Drop duplicates to get distance for each unique methodology
         result = pd.DataFrame({'Eucilidean Distance': distances.flatten(
         ), 'Methodology': names_similar}).drop_duplicates('Methodology')
 
+        # Convert dataframe to HTML object
         html = HTML(result.to_html(index=False, col_space=80))
 
         return y_predict[0], html
