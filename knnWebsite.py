@@ -7,7 +7,7 @@ class KNN_Algorithm():
 
     def __init__(self, test):
         """
-        constructor: set initial variables
+        Constructor: set initial variables
         """
 
         self.cols = ['methodology', 'requirements_volatility',

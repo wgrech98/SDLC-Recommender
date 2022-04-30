@@ -127,4 +127,5 @@ class Test():
             att = att_val_pair[0]
             val = att_val_pair[1]
             rule[att] = [val]
+
         return rule

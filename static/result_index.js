@@ -1,3 +1,4 @@
+// Logic for popover to shift explanations
 $(document).ready(function() {
     $("[data-toggle='tooltip']").tooltip();
     $('#wrapper_1_cn2').show()
@@ -61,13 +62,13 @@ kanban_text =
                 '<ul class="popover__message">' +
                     '<li>The Kanban approach falls under the agile methodology where work scheduling takes precedence over other factors</li>'+
                     '<li>Individual tasks are listed in the Kanban board according to their current progression to being completed </li>'+
-                    '<li>Task visualisation, continuous testing, and project size are some of the most important factors in this methodology</li>'+
+                    '<li>Task visualisation, continuous testing, and project size are some of the most important factors in this method</li>'+
                 '</ul>'
 
 spiral_text = 
             '<ul class="popover__message">' +
                     '<li>A combination of the iterative development process and the Waterfall methodology</li>'+
-                    '<li>Accounts for the risk factor in software projects. This is done through the rings in the spiral which are used to resemble every phase in the SD process</li>'+
+                    '<li>Accounts for the risk factor in software projects. This is done through the rings in the spiral which are used to resemble every phase in the software development process</li>'+
                     '<li>In every stage of the spiral process, prototypes are designed for the client to test and identify risks during the development process, thus unknown risks are gradually reduced</li>'+
                 '</ul>'
 
@@ -86,21 +87,23 @@ hybr_waterfall_scrum_text =
 
 hybrid_scrum_kanban_text = 
                             '<ul class="popover__message">' +
-                                '<li>This hybrid methodology is suitable for teams who require the structured process of the Scrum methodology with the visibility of the Kanban methodology</li>'+               
+                                '<li>This hybrid methodology is suitable for teams who require the structured process of the Scrum methodology with the visibility of the Kanban method</li>'+               
                                 '<li>Task visualisation, rapid delivery, and continuous customer invovlement are some of the most important factors in this methodology</li>'+
                             '</ul>'    
 
 
 function ShowMessageCn2() {
 
+    // Get the predicted methodology of the CN2 model
     var cn2 = document.getElementById('result_cn2').innerHTML;
 
+    // If statement to check which methodology was predicted and fetch the necessary methodology explanation
     if (cn2.startsWith("Scrum")) {
         text = scrum_text;
-        //  block of code to be executed if condition1 is true
+
     } else if (cn2.startsWith("Waterfall")) {
         text = waterfall_text;
-        //  block of code to be executed if the condition1 is false and condition2 is true
+
     } else if (cn2.startsWith("Kanban")) {
         text = kanban_text;
 
@@ -122,14 +125,16 @@ function ShowMessageCn2() {
 
 function ShowMessageKnn() {
 
+    // Get the predicted methodology of the KNN model
     var knn = document.getElementById('result_knn').innerHTML;
 
+    // If statement to check which methodology was predicted and fetch the necessary methodology explanation
     if (knn.startsWith("Scrum")) {
         textKnn = scrum_text;
-        //  block of code to be executed if condition1 is true
+
     } else if (knn.startsWith("Waterfall")) {
         textKnn = waterfall_text;
-        //  block of code to be executed if the condition1 is false and condition2 is true
+
     } else if (knn.startsWith("Kanban")) {
         textKnn = kanban_text;
 
@@ -151,14 +156,16 @@ function ShowMessageKnn() {
 
 function ShowMessaged3() {
 
+    // Get the predicted methodology of the decision tree model
     var d3 = document.getElementById('result_d3').innerHTML;
 
+    // If statement to check which methodology was predicted and fetch the necessary methodology explanation
     if (d3.startsWith("Scrum")) {
         textd3 = scrum_text;
-        //  block of code to be executed if condition1 is true
+
     } else if (d3.startsWith("Waterfall")) {
         textd3 = waterfall_text;
-        //  block of code to be executed if the condition1 is false and condition2 is true
+
     } else if (d3.startsWith("Kanban")) {
         textd3 = kanban_text;
 
