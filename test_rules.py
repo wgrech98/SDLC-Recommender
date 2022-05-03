@@ -5,6 +5,9 @@ import pickle
 class Test():
 
     def __init__(self, test):
+        """
+        Set initial variables
+        """
         self.remaining_examples = None
 
         self.cols = ['methodology', 'requirements_volatility',

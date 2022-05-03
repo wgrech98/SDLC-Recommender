@@ -7,7 +7,7 @@ class D3_Algorithm():
 
     def __init__(self, test):
         """
-        Constructor: set initial variables
+        Set initial variables
         """
         self.cols = ['methodology', 'requirements_volatility',
                      'requirements_clarity', 'development_time', 'project_size', 'team_size',
