@@ -1,5 +1,5 @@
 from flask import Flask, render_template, request
-from algorithms.Cn2Website import CN2_Algorithm
+from algorithms.cn2Website import CN2_Algorithm
 from algorithms.decisionTreeWebsite import D3_Algorithm as D3
 from algorithms.knnWebsite import KNN_Algorithm as knn
 
