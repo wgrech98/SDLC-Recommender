@@ -1,7 +1,7 @@
 from flask import Flask, render_template, request
-from test_rules import Test
-from decisionTreeWebsite import D3_Algorithm as D3
-from knnWebsite import KNN_Algorithm as knn
+from algorithms.test_rules import Test
+from algorithms.decisionTreeWebsite import D3_Algorithm as D3
+from algorithms.knnWebsite import KNN_Algorithm as knn
 
 app = Flask(__name__)
 

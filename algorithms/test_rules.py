@@ -42,7 +42,7 @@ class Test():
 
         self.max_star_size = 5
 
-        self.filename = "rules.pkl"
+        self.filename = "./algorithms/rules.pkl"
 
     def read_csv(self):
         """ 
@@ -51,7 +51,7 @@ class Test():
         The two dataframes are then merged together and the final dataframe is returned.
         """
 
-        csv_path = 'survey_dataset.csv'
+        csv_path = './dataset/survey_dataset.csv'
         df = pd.read_csv(csv_path, names=self.cols,
                          usecols=self.num_cols, header=0)
         df1 = pd.read_csv(csv_path, names=self.cols,

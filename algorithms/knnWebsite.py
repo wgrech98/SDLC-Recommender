@@ -1,14 +1,15 @@
 import pandas as pd
-from sklearn.tree import DecisionTreeClassifier
-import eli5
+from sklearn.neighbors import KNeighborsClassifier
+from IPython.display import HTML
 
 
-class D3_Algorithm():
+class KNN_Algorithm():
 
     def __init__(self, test):
         """
         Set initial variables
         """
+
         self.cols = ['methodology', 'requirements_volatility',
                      'requirements_clarity', 'development_time', 'project_size', 'team_size',
                      'product_complexity', 'testing_intensity', 'risk_analysis', 'user_participation',
@@ -39,7 +40,7 @@ class D3_Algorithm():
         The two dataframes are then merged together and the final dataframe is returned.
         """
 
-        csv_path = 'survey_dataset.csv'
+        csv_path = './dataset/survey_dataset.csv'
         df = pd.read_csv(csv_path, names=self.cols,
                          usecols=self.num_cols, header=0)
         df1 = pd.read_csv(csv_path, names=self.cols,
@@ -48,6 +49,8 @@ class D3_Algorithm():
         # Deleting rows with null values
         df = df.dropna()
         df1 = df1.dropna()
+
+        # Merging the two datasets
         self.dataset = df.append(df1, ignore_index=True)
 
         return self.dataset
@@ -103,26 +106,27 @@ class D3_Algorithm():
 
         return df
 
-    def perform_D3(self):
+    def perform_KNN(self):
         """
-        Function which creates a decision tree model, and generate predictions based on the model.
+        Function which performs the K-nearest neighbour and computes the eucilidean distance of
+        each methodology based on the user record.
 
-        Returns the decision tree prediction.
+        Returns the KNN prediction and a table with the methodologies' eucilidean distance based
+        on the user record
         """
 
-        # Invokes the read csv function
+        # Invokes read csv function
         self.read_csv()
 
-        # Convert string data to discrete variables
+        # Converts string data to discrete variables
         cl_dataset = self.convert_to_vectors(self.dataset)
 
         # Set X and y
         X = cl_dataset.drop('methodology', axis=1)
         y = cl_dataset[['methodology']]
 
-        # Create decision tree model with criterion entropy and max_depth 17 to account for all features
-        self.model = DecisionTreeClassifier(
-            criterion="entropy", random_state=42, max_depth=17, min_samples_leaf=1)
+        # Create knn model with number of neighbors set to 1
+        self.model = KNeighborsClassifier(n_neighbors=1)
 
         # Fit the model
         self.model.fit(X, y)
@@ -133,19 +137,24 @@ class D3_Algorithm():
         X_test = pd.DataFrame(X_test, columns=self.f_names)
 
         # Convert X_test values to discrete
-        self.X_test = self.convert_to_vectors(X_test)
+        X_test = self.convert_to_vectors(X_test)
 
-        y_predict = self.model.predict(self.X_test)
+        y_predict = self.model.predict(X_test)
 
-        return y_predict[0]
+        # Use the model to calculate Eucilidean distance from all the datapoints
+        distances, indices = self.model.kneighbors(
+            X_test, n_neighbors=103, return_distance=True)
 
-    def get_explanation(self):
-        """ 
-        Function which invokes the eli5 library to get insights about the most important features that led to a decision tree prediction.
-        Returns explanation.
-        """
+        # Set the methodology name as index and flatten
+        names_similar = pd.Series(indices.flatten()).map(
+            self.dataset.reset_index()['methodology'])
 
-        exp = eli5.show_prediction(
-            self.model, self.X_test, feature_names=self.f_names, top_targets=1, top=8)
+        # Create a dataframe with the methodology and the distance
+        # Drop duplicates to get distance for each unique methodology
+        result = pd.DataFrame({'Eucilidean Distance': distances.flatten(
+        ), 'Methodology': names_similar}).drop_duplicates('Methodology')
 
-        return exp
+        # Convert dataframe to HTML object
+        html = HTML(result.to_html(index=False, col_space=80))
+
+        return y_predict[0], html
