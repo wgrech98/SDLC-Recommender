@@ -1,5 +1,5 @@
 from flask import Flask, render_template, request
-from algorithms.test_rules import Test
+from algorithms.Cn2Website import CN2_Algorithm
 from algorithms.decisionTreeWebsite import D3_Algorithm as D3
 from algorithms.knnWebsite import KNN_Algorithm as knn
 
@@ -45,7 +45,7 @@ def result():
                 prototyping]]
 
     # The CN2 prediction
-    CN2 = Test(testSet)
+    CN2 = CN2_Algorithm(testSet)
     result_CN2, rule_cn2 = CN2.test_model()
 
     # The KNN prediction

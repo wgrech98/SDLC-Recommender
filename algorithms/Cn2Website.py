@@ -2,7 +2,7 @@ import pandas as pd
 import pickle
 
 
-class Test():
+class CN2_Algorithm():
 
     def __init__(self, test):
         """
