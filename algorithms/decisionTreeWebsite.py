@@ -52,7 +52,7 @@ class D3_Algorithm():
 
         return self.dataset
 
-    def convert_to_vectors(self, df):
+    def convert_to_integers(self, df):
         """ 
         Convert characteristics to vectors to enable machine learning processing.
 
@@ -114,7 +114,7 @@ class D3_Algorithm():
         self.read_csv()
 
         # Convert string data to discrete variables
-        cl_dataset = self.convert_to_vectors(self.dataset)
+        cl_dataset = self.convert_to_integers(self.dataset)
 
         # Set X and y
         X = cl_dataset.drop('methodology', axis=1)
@@ -133,7 +133,7 @@ class D3_Algorithm():
         X_test = pd.DataFrame(X_test, columns=self.f_names)
 
         # Convert X_test values to discrete
-        self.X_test = self.convert_to_vectors(X_test)
+        self.X_test = self.convert_to_integers(X_test)
 
         y_predict = self.model.predict(self.X_test)
 

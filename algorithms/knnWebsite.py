@@ -55,7 +55,7 @@ class KNN_Algorithm():
 
         return self.dataset
 
-    def convert_to_vectors(self, df):
+    def convert_to_integers(self, df):
         """ 
         Convert characteristics to vectors to enable machine learning processing.
 
@@ -119,7 +119,7 @@ class KNN_Algorithm():
         self.read_csv()
 
         # Converts string data to discrete variables
-        cl_dataset = self.convert_to_vectors(self.dataset)
+        cl_dataset = self.convert_to_integers(self.dataset)
 
         # Set X and y
         X = cl_dataset.drop('methodology', axis=1)
@@ -137,7 +137,7 @@ class KNN_Algorithm():
         X_test = pd.DataFrame(X_test, columns=self.f_names)
 
         # Convert X_test values to discrete
-        X_test = self.convert_to_vectors(X_test)
+        X_test = self.convert_to_integers(X_test)
 
         y_predict = self.model.predict(X_test)
 
