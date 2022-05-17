@@ -59,7 +59,9 @@ To run the RMS:
 
 1. Get to the home page by running the RMS as highlighted in the above section
 
-2. Enter values for each characteristic by clicking on the
+![Homepage](https://github.com/wgrech98/SDLC-Recommender/blob/master/Images/homepage.png)
+
+2. Enter values for each characteristic by clicking on the dropdown arrow and selecting the appropriate value for the software project
 
 3. Once all values are entered, hit the submit button
 
