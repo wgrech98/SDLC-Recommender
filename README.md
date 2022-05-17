@@ -59,7 +59,7 @@ To run the RMS:
 
 1. Get to the home page by running the RMS as highlighted in the above section
 
-![Homepage](https://github.com/wgrech98/SDLC-Recommender/blob/master/Images/homepage.png =250x250)
+![Homepage](https://github.com/wgrech98/SDLC-Recommender/blob/master/Images/homepage.png | width=100)
 
 2. Enter values for each characteristic by clicking on the dropdown arrow and selecting the appropriate value for the software project
 
