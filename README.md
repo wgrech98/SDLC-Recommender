@@ -63,8 +63,16 @@ To run the RMS:
 
 2. Enter values for each characteristic by clicking on the dropdown arrow and selecting the appropriate value for the software project
 
+![dropdown values](https://github.com/wgrech98/SDLC-Recommender/blob/master/Images/dropdown_for_characteristic.png)
+
 3. Once all values are entered, hit the submit button
 
 4. The results page pops up with a table holding the name of the algorithm in question and the corresponding prediction.
 
+![results_table](https://github.com/wgrech98/SDLC-Recommender/blob/master/Images/results_table.png)
+
 5. The prediction explanation can be accessed by hovering over the prediction
+
+![CN2](https://github.com/wgrech98/SDLC-Recommender/blob/master/Images/rule_cn2.png)
+![KNN](https://github.com/wgrech98/SDLC-Recommender/blob/master/Images/knn_explanation.png)
+![Decision_Tree](https://github.com/wgrech98/SDLC-Recommender/blob/master/Images/feature_contribution.png)
