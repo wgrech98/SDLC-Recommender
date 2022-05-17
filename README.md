@@ -69,7 +69,7 @@ To run the RMS:
 
 4. The results page pops up with a table holding the name of the algorithm in question and the corresponding prediction.
 
-![results_table](https://github.com/wgrech98/SDLC-Recommender/blob/master/Images/results_table.png {width=40px height=400px})
+![results_table](https://github.com/wgrech98/SDLC-Recommender/blob/master/Images/results_table.png)
 
 5. The prediction explanation can be accessed by hovering over the prediction
 
