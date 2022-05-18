@@ -28,6 +28,7 @@
             <tbody>
                 <tr class="active-row">
                     <td class="text-center">
+                        <!-- tooltip to explain algorithm -->
                         <span data-toggle="tooltip"  
                             title="The CN2 rule-based classifier generates rules in the form of if-then statements and is suitable for noisy (imperfect) data ">CN2 Algorithm
                             <i class="fa fa-question-circle" aria-hidden="true"></i>
@@ -35,12 +36,15 @@
                     </td>
                     <td class="text-center">
                         <div class="popover__wrapper">
+                            <!-- container for prediction title -->
                             <div class="popover__title" id = "result_cn2">{{ result10 }}
+                                <!-- question circle near prediction to prompt user about the tooltip -->
                                 <i class="fa fa-question-circle" aria-hidden="true"></i>
                             </div>
+                            <!-- container for popover content -->
                             <div class="popover__content">
-                                <!-- <button class="btn btn-primary btn-block btn-md" id = "NextBtnKNN">Next</button> -->
                                 <div id = "wrapper_content_CN2">
+                                    <!-- container for first page in tooltip -->
                                     <div id= "wrapper_1_cn2">
                                         <div class="popover-header">
                                             <div class="title">Rule For CN2 prediction</div>
@@ -50,6 +54,7 @@
                                             <div class="other-table text-center">{{ rule_of_cn2 }}</div>
                                         </div>
                                     </div>
+                                    <!-- container for first page in tooltip -->
                                     <div id = "wrapper_another_cn2">
                                         <div class="popover-header">
                                             <div class="title">Methodology Explanation</div>
@@ -64,6 +69,7 @@
                 </tr>
                 <tr class="active-row">
                     <td class="text-center">
+                        <!-- tooltip to explain algorithm -->
                         <span data-toggle="tooltip"  
                             title="The K-Nearest Neighbour's is a method where neighbours are generated according to the 
                             nearest datapoint in the training set">KNN Algorithm
@@ -71,13 +77,16 @@
                        </span>
                     </td>
                     <td class="text-center">
+                    <!-- container for prediction title -->
                         <div class="popover__wrapper">
                             <div class="popover__title" id = "result_knn">{{ result20 }}
+                            <!-- question circle near prediction to prompt user about the tooltip -->
                                 <i class="fa fa-question-circle" aria-hidden="true"></i>
                             </div>
+                            <!-- container for popover content -->
                             <div class="popover__content">
-                                <!-- <button class="btn btn-primary btn-block btn-md" id = "NextBtnKNN">Next</button> -->
                                 <div id = "wrapper_content_knn">
+                                <!-- container for first page in tooltip -->
                                     <div id= "wrapper_1_knn">
                                         <div class="popover-header">
                                             <div class="title">Eucilidean Distance Ranking</div>
@@ -88,6 +97,7 @@
                                             <div class="other-table text-center">{{ html_knn }}</div>
                                         </div>
                                     </div>
+                                    <!-- container for second page in tooltip -->
                                     <div id = "wrapper_another_knn">
                                         <div class="popover-header">
                                             <div class="title">Methodology Explanation</div>
@@ -102,6 +112,7 @@
                 </tr>
                 <tr class="active-row">
                     <td class="text-center">
+                        <!-- tooltip to explain algorithm -->
                         <span data-toggle="tooltip"  
                             title="Decision Trees are another important rule-based technique represented in a tree structure. 
                             The algorithm splits the dataset into smaller classes according to the most important predictor in the 
@@ -110,13 +121,16 @@
                         </span>
                     </td>
                     <td class="text-center">
+                        <!-- container for prediction title -->
                         <div class="popover__wrapper">
                             <div class="popover__title" id = "result_d3">{{ result30 }}
+                                <!-- question circle near prediction to prompt user about the tooltip -->
                                 <i class="fa fa-question-circle" aria-hidden="true"></i>
                             </div>
+                            <!-- container for popover content -->
                             <div class="popover__content">
-                                <!-- <button class="btn btn-primary btn-block btn-md" id = "NextBtnKNN">Next</button> -->
                                 <div id = "wrapper_content_d3">
+                                <!-- container for first page in tooltip -->
                                     <div id= "wrapper_1_d3">
                                         <div class="popover-header">
                                             <div class="title">Decision Tree Explainable AI</div>
@@ -126,6 +140,7 @@
                                             <div class="other-table text-center">{{ exp_d3 }}</div>
                                         </div>
                                     </div>
+                                    <!-- container for second page in tooltip -->
                                     <div id = "wrapper_another_D3">
                                         <div class="popover-header">
                                             <div class="title">Methodology Explanation</div>
@@ -138,7 +153,6 @@
                         </div>
                     </td>
                 </tr>
-                <!-- and so on... -->
             </tbody>
         </table>
     </main>   
