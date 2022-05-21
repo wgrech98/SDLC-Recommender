@@ -83,13 +83,13 @@ To run the RMS:
 5. The prediction explanation can be accessed by hovering over the prediction
 
 <p align="center">
-  <img src="![CN2](https://github.com/wgrech98/SDLC-Recommender/blob/master/Images/rule_cn2.png)" alt="Size Limit CLI" width="738">
+  <img src="https://github.com/wgrech98/SDLC-Recommender/blob/master/Images/rule_cn2.png" alt="Size Limit CLI" width="738">
 </p>
 <p align="center">
-  <img src="![KNN](https://github.com/wgrech98/SDLC-Recommender/blob/master/Images/knn_explanation.png)" alt="Size Limit CLI" width="738">
+  <img src="https://github.com/wgrech98/SDLC-Recommender/blob/master/Images/knn_explanation.png" alt="Size Limit CLI" width="738">
 </p>
 <p align="center">
-  <img src="![Decision_Tree](https://github.com/wgrech98/SDLC-Recommender/blob/master/Images/feature_contribution.png)" alt="Size Limit CLI" width="738">
+  <img src="https://github.com/wgrech98/SDLC-Recommender/blob/master/Images/feature_contribution.png" alt="Size Limit CLI" width="738">
 </p>
 
 <!-- ![CN2](https://github.com/wgrech98/SDLC-Recommender/blob/master/Images/rule_cn2.png)
