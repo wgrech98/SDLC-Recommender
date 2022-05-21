@@ -83,7 +83,7 @@ To run the RMS:
 5. The prediction explanation can be accessed by hovering over the prediction
 
 <p align="center">
-  <img src="https://github.com/wgrech98/SDLC-Recommender/blob/master/Images/rule_cn2.png" alt="Size Limit CLI" width="500"  height = 250>
+  <img src="https://github.com/wgrech98/SDLC-Recommender/blob/master/Images/rule_cn2.png" alt="Size Limit CLI" width="500"  height = 150>
 </p>
 <p align="center">
   <img src="https://github.com/wgrech98/SDLC-Recommender/blob/master/Images/knn_explanation.png" alt="Size Limit CLI" width="600"  height = 600>
