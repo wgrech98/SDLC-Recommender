@@ -86,10 +86,10 @@ To run the RMS:
   <img src="https://github.com/wgrech98/SDLC-Recommender/blob/master/Images/rule_cn2.png" alt="Size Limit CLI" width="500"  height = 200>
 </p>
 <p align="center">
-  <img src="https://github.com/wgrech98/SDLC-Recommender/blob/master/Images/knn_explanation.png" alt="Size Limit CLI" width="600"  height = 600>
+  <img src="https://github.com/wgrech98/SDLC-Recommender/blob/master/Images/knn_explanation.png" alt="Size Limit CLI" width="500"  height = 500>
 </p>
 <p align="center">
-  <img src="https://github.com/wgrech98/SDLC-Recommender/blob/master/Images/feature_contribution.png" alt="Size Limit CLI" width="600" height = 600>
+  <img src="https://github.com/wgrech98/SDLC-Recommender/blob/master/Images/feature_contribution.png" alt="Size Limit CLI" width="500" height = 500>
 </p>
 
 <!-- ![CN2](https://github.com/wgrech98/SDLC-Recommender/blob/master/Images/rule_cn2.png)
