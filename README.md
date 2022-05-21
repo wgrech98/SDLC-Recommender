@@ -56,7 +56,7 @@ To run the RMS:
 
 ## Guidance to use the RMS
 
-1. Go to the home page by running the RMS as highlighted in the above section
+1. Get to the home page by running the RMS as highlighted in the above section
 
 <p align="center">
   <img src="https://github.com/wgrech98/SDLC-Recommender/blob/master/Images/homepage.png" alt="Size Limit CLI" width="738">
