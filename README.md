@@ -45,21 +45,22 @@ The prediction along with a feature contribution table (used the eli5 python pac
 
 # The Recommender System
 
-The Web aplication was implemented with the use of python Flask, HTML scripting language, CSS, and Javascript.
-
-Once the application is running, The home page will appear as below.
+The Web aplication was implemented with the use of python Flask (Python version used: 3.10.1), HTML scripting language, CSS, and Javascript.
 
 To run the RMS:
 
 1. Download the entire repository
 2. Unzip all files
-3. run app.py on port 5000
+3. pip install -r requirements.txt
+4. run app.py on port 5000
 
 ## Guidance to use the RMS
 
-1. Get to the home page by running the RMS as highlighted in the above section
+1. Go to the home page by running the RMS as highlighted in the above section
 
-![Homepage](https://github.com/wgrech98/SDLC-Recommender/blob/master/Images/homepage.png)
+<p align="center">
+  <img src="https://github.com/wgrech98/SDLC-Recommender/blob/master/Images/homepage.png" alt="Size Limit CLI" width="738">
+</p>
 
 2. Enter values for each characteristic by clicking on the dropdown arrow and selecting the appropriate value for the software project
 
