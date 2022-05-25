@@ -59,13 +59,13 @@ To run the RMS:
 1. Get to the home page by running the RMS as highlighted in the above section
 
 <p align="center">
-  <img src="https://github.com/wgrech98/SDLC-Recommender/blob/master/Images/homepage.png" alt="homepage" width="738">
+  <img src="https://github.com/wgrech98/SDLC-Recommender/blob/master/images/homepage.png" alt="homepage" width="738">
 </p>
 
 2. Enter values for each characteristic by clicking on the dropdown arrow and selecting the appropriate value for the software project
 
 <p align="center">
-  <img src="https://github.com/wgrech98/SDLC-Recommender/blob/master/Images/dropdown_for_characteristic.png" alt="dropdown menu" width="738">
+  <img src="https://github.com/wgrech98/SDLC-Recommender/blob/master/images/dropdown_for_characteristic.png" alt="dropdown menu" width="738">
 </p>
 
 <!-- ![dropdown values](https://github.com/wgrech98/SDLC-Recommender/blob/master/Images/dropdown_for_characteristic.png) -->
@@ -77,19 +77,19 @@ To run the RMS:
 <!-- ![results_table](https://github.com/wgrech98/SDLC-Recommender/blob/master/Images/results_table.png) -->
 
 <p align="center">
-  <img src="https://github.com/wgrech98/SDLC-Recommender/blob/master/Images/results_table.png" alt="results table" width="500" height = 500>
+  <img src="https://github.com/wgrech98/SDLC-Recommender/blob/master/images/results_table.png" alt="results table" width="500" height = 500>
 </p>
 
 5. The prediction explanation can be accessed by hovering over the prediction
 
 <p align="center">
-  <img src="https://github.com/wgrech98/SDLC-Recommender/blob/master/Images/rule_cn2.png" alt="CN2" width="500"  height = 200>
+  <img src="https://github.com/wgrech98/SDLC-Recommender/blob/master/images/rule_cn2.png" alt="CN2" width="500"  height = 200>
 </p>
 <p align="center">
-  <img src="https://github.com/wgrech98/SDLC-Recommender/blob/master/Images/knn_explanation.png" alt="KNN" width="500"  height = 500>
+  <img src="https://github.com/wgrech98/SDLC-Recommender/blob/master/images/knn_explanation.png" alt="KNN" width="500"  height = 500>
 </p>
 <p align="center">
-  <img src="https://github.com/wgrech98/SDLC-Recommender/blob/master/Images/feature_contribution.png" alt="feature contribution" width="500" height = 500>
+  <img src="https://github.com/wgrech98/SDLC-Recommender/blob/master/images/feature_contribution.png" alt="feature contribution" width="500" height = 500>
 </p>
 
 <!-- ![CN2](https://github.com/wgrech98/SDLC-Recommender/blob/master/Images/rule_cn2.png)
